@@ -123,7 +123,8 @@
 <meta property="og:description" content="写在前面  开放式Web应用程序安全项目公布的十大WEB安全漏洞OWASP TOP 10 2017   WEB安全三境界 Tools User   工具小子对各种漏洞原理浅浅了解，缺乏Web站点开发与运维经验能力，缺乏对HTTP协议的掌握，只能略读懂（甚至不懂）一种或多种脚本语言。通常只会使用别人开发的攻击测试工具（以Windows GUI为主），以猜测弱口令、自主利用“BB型”漏洞或者使用他人漏">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.mp.itc.cn/upload/20170417/9286692719ce46c1829a3c16486942c3_th.jpeg">
-<meta property="og:updated_time" content="2017-09-22T12:06:21.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/09/19/Web-Security-Demo/1.png">
+<meta property="og:updated_time" content="2017-09-22T14:17:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web安全扫盲Demo">
 <meta name="twitter:description" content="写在前面  开放式Web应用程序安全项目公布的十大WEB安全漏洞OWASP TOP 10 2017   WEB安全三境界 Tools User   工具小子对各种漏洞原理浅浅了解，缺乏Web站点开发与运维经验能力，缺乏对HTTP协议的掌握，只能略读懂（甚至不懂）一种或多种脚本语言。通常只会使用别人开发的攻击测试工具（以Windows GUI为主），以猜测弱口令、自主利用“BB型”漏洞或者使用他人漏">
@@ -394,7 +395,8 @@
 </li>
 </ul>
 <a id="more"></a>
-<h4 id="WEB应用服务体系与攻击测试步骤"><a href="#WEB应用服务体系与攻击测试步骤" class="headerlink" title="WEB应用服务体系与攻击测试步骤"></a>WEB应用服务体系与攻击测试步骤</h4><hr>
+<h4 id="WEB应用服务体系与攻击测试步骤"><a href="#WEB应用服务体系与攻击测试步骤" class="headerlink" title="WEB应用服务体系与攻击测试步骤"></a>WEB应用服务体系与攻击测试步骤</h4><p><img src="/2017/09/19/Web-Security-Demo/1.png" alt="WEB应用服务体系"></p>
+<hr>
 <h3 id="WEB安全漏洞演示-Baby-Demo"><a href="#WEB安全漏洞演示-Baby-Demo" class="headerlink" title="WEB安全漏洞演示 Baby Demo"></a>WEB安全漏洞演示 Baby Demo</h3><p>我们将展示基于PHP+MySQL（目前广泛用于中小型站点）的WEB应用漏洞利用过程。展示在<a href="http://www.dvwa.co.uk/index.php" target="_blank" rel="external">Damn Vulnerable Web Application</a>(DVWA) Version 1.9上进行。虽然DVWA于2015-09-19发布1.9版本后再更新，但仍然是比较好WEB安全入门测试平台。</p>
 <h4 id="一、信息泄露类"><a href="#一、信息泄露类" class="headerlink" title="一、信息泄露类"></a>一、信息泄露类</h4><h4 id="（一）文件包含漏洞"><a href="#（一）文件包含漏洞" class="headerlink" title="（一）文件包含漏洞"></a>（一）文件包含漏洞</h4><p>PHP文件包含漏洞的产生原因是在通过PHP的函数引入文件时，由于传入的文件名没有经过合理的校验，从而操作了预想之外的文件，就可能导致意外的文件泄露甚至恶意的代码注入。</p>
 <ul>
