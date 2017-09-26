@@ -121,7 +121,7 @@
 <meta property="og:site_name" content="Area of Mental Flow">
 <meta property="og:description" content="备份容器运行docker ps,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。   1docker commit -p 30b8f18f20b4 container-backup 该命令生成一个作为Docker镜像的容器快照，通过运行docker images命令来查看已经生成的Docker镜像。 为了备份该快照，有两个选择，一个是登录Docker中心">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-25T08:42:48.000Z">
+<meta property="og:updated_time" content="2017-09-26T06:18:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker中容器的备份、恢复">
 <meta name="twitter:description" content="备份容器运行docker ps,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。   1docker commit -p 30b8f18f20b4 container-backup 该命令生成一个作为Docker镜像的容器快照，通过运行docker images命令来查看已经生成的Docker镜像。 为了备份该快照，有两个选择，一个是登录Docker中心">
@@ -366,7 +366,7 @@
 <h3 id="Docker-Compose-项目备份注意事项"><a href="#Docker-Compose-项目备份注意事项" class="headerlink" title="Docker Compose 项目备份注意事项"></a>Docker Compose 项目备份注意事项</h3><ol>
 <li>备份还原时需要另一个docker-compose.yml来定义恢复的项目。（端口映射要二次定义）</li>
 <li>每一个容器都要备份成tar包</li>
-<li>原项目挂载的数据也会被打包进tar包，但恢复时如果重新按照原路径会覆盖容器中数据。如果不挂载目录，则数据在一直在docker容器中。可以重新挂载一个物理机上新的路径，将数据拷出来。(感觉还不如直接备份数据？？？)</li>
+<li>原项目挂载的数据也会被打包进tar包，但恢复时如果重新按照原路径会覆盖容器中数据。如果不挂载目录，则数据在一直在docker容器中。可以重新挂载一个物理机上新的路径，将数据拷出来。</li>
 </ol>
 
       
