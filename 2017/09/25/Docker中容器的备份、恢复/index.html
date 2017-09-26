@@ -114,17 +114,17 @@
 
 
 
-<meta name="description" content="备份容器运行docker ps,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。   1docker commit -p 30b8f18f20b4 container-backup 该命令生成一个作为Docker镜像的容器快照，通过运行docker images命令来查看已经生成的Docker镜像。 为了备份该快照，有两个选择，一个是登录Docker中心">
+<meta name="description" content="备份容器运行docker ps,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker中容器的备份、恢复">
 <meta property="og:url" content="http://yoursite.com/2017/09/25/Docker中容器的备份、恢复/index.html">
 <meta property="og:site_name" content="Area of Mental Flow">
-<meta property="og:description" content="备份容器运行docker ps,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。   1docker commit -p 30b8f18f20b4 container-backup 该命令生成一个作为Docker镜像的容器快照，通过运行docker images命令来查看已经生成的Docker镜像。 为了备份该快照，有两个选择，一个是登录Docker中心">
+<meta property="og:description" content="备份容器运行docker ps,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-26T06:18:45.000Z">
+<meta property="og:updated_time" content="2017-09-26T06:24:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker中容器的备份、恢复">
-<meta name="twitter:description" content="备份容器运行docker ps,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。   1docker commit -p 30b8f18f20b4 container-backup 该命令生成一个作为Docker镜像的容器快照，通过运行docker images命令来查看已经生成的Docker镜像。 为了备份该快照，有两个选择，一个是登录Docker中心">
+<meta name="twitter:description" content="备份容器运行docker ps,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。">
 
 
 
@@ -354,7 +354,7 @@
       
 
       
-        <h3 id="备份容器"><a href="#备份容器" class="headerlink" title="备份容器"></a>备份容器</h3><p>运行<code>docker ps</code>,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。</p>
+        <h3 id="备份容器"><a href="#备份容器" class="headerlink" title="备份容器"></a>备份容器</h3><p>运行<code>docker ps</code>,查看容器列表。选择想要备份的容器，使用 docker commit 命令来创建该容器的快照。<br><a id="more"></a></p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker commit -p 30b8f18f20b4 container-backup</div></pre></td></tr></table></figure>
 <p>该命令生成一个作为Docker镜像的容器快照，通过运行<code>docker images</code>命令来查看已经生成的Docker镜像。</p>
 <p>为了备份该快照，有两个选择，一个是登录Docker中心，并推送该镜像；另一个是将Docker镜像打包成tar包备份。<br>运行以下 docker save 命令完成tar命令打包。</p>
